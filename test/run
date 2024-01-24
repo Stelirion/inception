@@ -1,1 +1,1 @@
-docker run -d -i -t test-image test
+docker run -d -it test-image test

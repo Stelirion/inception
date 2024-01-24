@@ -1,6 +1,15 @@
-FROM debian:bullseye
+FROM debian:buster
+
 RUN apt update -y
-RUN apt install nginx
-WORKDIR /etc/nginx
+
+RUN apt install nginx openssl -y
+
+# WORKDIR /etc/nginx
+
+# COPY ./derlr.conf .
+# COPY ./derlr.conf .
+# COPY ./derlr.conf .
+
 EXPOSE 443
-CMD ['systemd','start','nginx']
+
+CMD ["nginx", "-g", "daemon off;"]
