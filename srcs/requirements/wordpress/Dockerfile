@@ -2,19 +2,12 @@
 
 FROM debian:oldstable
 
-RUN apt update -y && apt upgrade -y
+RUN     	apt-get update -y && apt-get install -y php-fpm php-mysql curl
 
-RUN apt-get install -y php-fpm php-mysqli curl
+WORKDIR     /var/www/html
 
-ADD		https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin/wp
-RUN		chmod +x /usr/local/bin/wp
+COPY 		conf/wp-config.php /
+COPY    	tools/scriptWORDPRESS.sh /
 
-RUN mkdir -p /var/www/html/wordpress
 
-EXPOSE 9000
-
-COPY /tools/entrypoint.sh /tmp
-
-COPY /conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-
-CMD ["sh", "/tmp/entrypoint.sh"]
+CMD 		[ "/bin/sh", "/scriptWORDPRESS.sh" ]

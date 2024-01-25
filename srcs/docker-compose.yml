@@ -53,7 +53,7 @@ services:
       - .env
     image: wordpress
     volumes:
-      - wordpress:/var/www/html/wordpress
+      - wordpress:/var/www/html/
     networks:
       - inception
     restart: always
