@@ -19,7 +19,6 @@ RUN service mariadb start \
 	&& mariadb -e "ALTER USER '${DB_ROOT}'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';"
 
 #expose the port (it's only for metadata)
-# EXPOSE 3306
+EXPOSE 3306
 
 CMD ["mariadbd", "--bind-address=0.0.0.0"]
-# CMD ["tail", "-f", "/dev/null"]
