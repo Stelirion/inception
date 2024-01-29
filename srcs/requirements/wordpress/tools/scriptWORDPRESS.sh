@@ -19,12 +19,12 @@ wp user create "$WP_ADMIN" "$WP_ADMIN_EMAIL" --role=administrator --user_pass="$
 
 wp theme install twentytwenty --activate --allow-root
 
-wp post delete $(wp post list --posts_per_page=1 --format=ids --allow-root) --allow-root;
-wp post delete $(wp post list --post_type=page --format=ids --allow-root) --allow-root;
+# wp post delete $(wp post list --posts_per_page=1 --format=ids --allow-root) --allow-root;
+# wp post delete $(wp post list --post_type=page --format=ids --allow-root) --allow-root;
 
 wp plugin update --all --allow-root
 
-wp post create --post_type='post' --post_status=publish --post_title='Inception' --post_content="Un projet de kaliter" --post_thumbnail_id=7 --post_author=2 --allow-root
+# wp post create --post_type='post' --post_status=publish --post_title='Inception' --post_content="Un projet de kaliter" --post_thumbnail_id=7 --post_author=2 --allow-root
  
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 

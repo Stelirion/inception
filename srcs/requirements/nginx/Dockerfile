@@ -7,7 +7,6 @@ RUN apt install nginx openssl -y
 
 #copy and link the nginx config file
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./index.html /etc/nginx
 
 RUN mkdir -p /etc/nginx/ssl
 #generate the ssl autosigned key
