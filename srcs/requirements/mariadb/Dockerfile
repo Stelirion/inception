@@ -21,4 +21,5 @@ RUN service mariadb start \
 #expose the port (it's only for metadata)
 EXPOSE 3306
 
+#launch
 CMD ["mariadbd", "--bind-address=0.0.0.0"]
