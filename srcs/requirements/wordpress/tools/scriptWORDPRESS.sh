@@ -4,13 +4,7 @@ chmod +x /usr/local/bin/wp
 
 wp core download --allow-root
 
-mv /wp-config.php .
-
-sed -i -r "s/db_name/wordpress_DB/1"   wp-config.php
-sed -i -r "s/user/$DB_USER/1"  wp-config.php
-sed -i -r "s/pwd/$DB_USER_PASSWORD/1"    wp-config.php
-sed -i -r "s/localhost/mariadb/1"    wp-config.php
-
+wp config create --dbname="wordpress_DB" --dbuser="$DB_USER" --dbpass="$DB_USER_PASSWORD" --dbhost="$DB_HOST" --allow-root
 
 wp core install --url="$DOMAIN_NAME/" --title="$WP_TITLE" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_ADMIN_EMAIL" --skip-email --allow-root
 
