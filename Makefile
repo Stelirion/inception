@@ -8,6 +8,9 @@ logs:
 
 
 up:
+	mkdir -p ./data/
+	mkdir -p ./data/mariadb
+	mkdir -p ./data/wordpress
 	${cmd} ${file} up --build -d
 
 down:
@@ -18,8 +21,9 @@ clean: down
 	docker system prune -a -f --volumes
 
 fclean: clean
-	sudo rm -rf ./data/mariadb/*
-	sudo rm -rf ./data/wordpress/*
+	-docker volume rm wordpress
+	-docker volume rm mariadb
+	sudo rm -rf ./data/
 
 info:
 	docker system df
